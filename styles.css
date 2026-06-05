@@ -247,6 +247,16 @@ section {
 }
 
 /* Navigation */
+.f-nav {
+  display: none;
+}
+
+@media (min-width: 58.75em) {
+  .f-nav {
+    display: block;
+  }
+}
+
 .f-nav ul {
   display: flex;
   align-items: center;
