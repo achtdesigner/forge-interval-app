@@ -66,16 +66,26 @@ section {
 
 /* experience */
 .f-experience {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(28em, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: var(--spacing-32);
+}
+
+@media (min-width: 58.75em) {
+  .f-experience {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .f-experience > div:first-child {
+    max-width: 44ch;
+  }
 }
 
 .f-experience > div:first-child {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-32);
-  max-width: 44ch;
 }
 
 .f-experience ul {
