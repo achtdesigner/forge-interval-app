@@ -1,0 +1,45 @@
+/* experience */
+.f-experience {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-32);
+}
+
+@media (min-width: 58.75em) {
+  .f-experience {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .f-experience > div:first-child {
+    max-width: 44ch;
+  }
+}
+
+.f-experience > div:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-32);
+}
+
+.f-experience ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.f-experience li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-16);
+  padding-block: var(--spacing-24);
+  border-top: var(--spacing-1) solid var(--color-border);
+}
+
+.f-experience li p {
+  font-size: var(--font-size-8);
+}
+
+.f-experience li:last-child {
+  border-bottom: var(--spacing-1) solid var(--color-border);
+}

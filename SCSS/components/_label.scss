@@ -1,0 +1,20 @@
+.f-label {
+  position: relative;
+  display: inline-block;
+  font-size: var(--font-size-9);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.f-label.-highlight:before {
+  content: "";
+  display: inline-block;
+  margin-right: var(--spacing-8);
+  margin-bottom: var(--spacing-4);
+  width: var(--spacing-16);
+  height: var(--spacing-1);
+  background: var(--color-accent);
+}

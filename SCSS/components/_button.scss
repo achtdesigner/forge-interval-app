@@ -1,0 +1,86 @@
+/* buttons */
+.f-button {
+  cursor: pointer;
+  user-select: none;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: var(--height-button-m);
+
+  padding: var(--spacing-6) var(--spacing-16);
+
+  font-size: var(--font-size-8);
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  color: var(--color-text-inverse);
+
+  background: var(--color-accent);
+  border: none;
+  border-radius: var(--border-radius-m);
+
+  transition: var(--transition-button);
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (hover: hover) {
+  .f-button:hover {
+    background: var(--color-accent-hover);
+  }
+}
+
+.f-button:active {
+  background: var(--color-accent-active);
+}
+
+/* secondary buttons */
+.f-button.-secondary {
+  color: var(--color-text);
+  border: var(--spacing-1) solid var(--color-border);
+  background: var(--color-background-secondary);
+}
+
+@media (hover: hover) {
+  .f-button.-secondary:hover {
+    color: var(--color-text);
+    border: var(--spacing-1) solid var(--color-border-secondary);
+    background: var(--color-background-tertiary);
+  }
+}
+
+.f-button.-secondary:active {
+  color: var(--color-text);
+  background: var(--color-background-tertiary);
+}
+
+/* tertiary buttons */
+.f-button.-tertiary {
+  color: var(--color-text);
+  background: transparent;
+}
+
+@media (hover: hover) {
+  .f-button.-tertiary:hover {
+    color: var(--color-text);
+    background: transparent;
+  }
+}
+
+.f-button.-tertiary:active {
+  color: var(--color-text);
+  background: transparent;
+}
+
+/* modifier */
+.f-button:focus-visible {
+  outline: var(--spacing-1) solid var(--color-accent-secondary);
+  outline-offset: var(--spacing-2);
+}
+
+.f-button.-l {
+  min-height: var(--height-button-l);
+  padding: var(--spacing-8) var(--spacing-26);
+}

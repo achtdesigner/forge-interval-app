@@ -1,0 +1,12 @@
+.f-icon-card {
+  flex-shrink: 0;
+  flex-grow: 0;
+  display: flex;
+  align-items: center;
+  width: var(--spacing-40);
+  aspect-ratio: 1 / 1;
+  border-radius: var(--border-radius-m);
+  color: var(--color-text);
+  background: var(--color-background-secondary);
+  border: var(--spacing-1) solid var(--color-border);
+}

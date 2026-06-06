@@ -1,0 +1,23 @@
+.f-flex {
+  display: flex;
+}
+
+.f-flex-column {
+  flex-direction: column;
+}
+
+.f-gap-4 {
+  gap: var(--spacing-4);
+}
+
+.f-gap-8 {
+  gap: var(--spacing-8);
+}
+
+.f-gap-16 {
+  gap: var(--spacing-16);
+}
+
+.f-item-center {
+  align-items: center;
+}

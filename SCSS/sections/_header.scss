@@ -1,0 +1,16 @@
+/* Header */
+.f-header {
+  z-index: 100;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: transparent;
+  border-bottom: var(--spacing-1) solid transparent;
+  transition: var(--transition-header);
+}
+
+.f-header.-scrolled {
+  border-color: var(--color-border);
+  background-color: var(--color-background-primary);
+}
