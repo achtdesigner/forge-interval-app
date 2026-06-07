@@ -74,12 +74,6 @@
   background: transparent;
 }
 
-/* modifier */
-.f-button:focus-visible {
-  outline: var(--spacing-1) solid var(--color-accent-secondary);
-  outline-offset: var(--spacing-2);
-}
-
 .f-button.-l {
   min-height: var(--height-button-l);
   padding: var(--spacing-8) var(--spacing-26);

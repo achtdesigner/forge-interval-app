@@ -1,0 +1,23 @@
+.f-footer {
+  padding-block: var(--spacing-54);
+  border-top: var(--spacing-1) solid var(--color-border);
+
+  &-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--spacing-8);
+  }
+
+  &-copyright {
+    margin-block-start: var(--spacing-32);
+    padding-block-start: var(--spacing-24);
+    border-top: var(--spacing-1) solid var(--color-border);
+
+    p {
+      font-size: var(--font-size-9);
+      color: var(--color-text-disabled);
+    }
+  }
+}

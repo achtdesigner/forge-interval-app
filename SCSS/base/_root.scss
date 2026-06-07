@@ -1,5 +1,6 @@
 :root {
   --color-background-primary: #0c0c0c;
+  --color-background-primary-inverse: #fafafa;
   --color-background-secondary: #141417;
   --color-background-tertiary: #232328;
 
@@ -60,6 +61,7 @@
   --line-height-7: 1.6;
 
   --border-radius-m: 0.75rem;
+  --border-radius-full: 999rem;
 
   --height-button-m: 2.5rem; /* 40px */
   --height-button-l: 3.375rem; /* 54px */

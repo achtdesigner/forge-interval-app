@@ -1,0 +1,16 @@
+.f-download {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: var(--spacing-16);
+  text-align: center;
+
+  h2 {
+    font-size: var(--font-size-1);
+  }
+
+  p {
+    width: 100%;
+    max-width: 64ch;
+  }
+}

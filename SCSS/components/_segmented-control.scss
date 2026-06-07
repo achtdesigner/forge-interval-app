@@ -1,0 +1,41 @@
+.f-segmented-control {
+  flex-shrink: 0;
+  flex-grow: 0;
+  width: max-content;
+  display: inline-flex;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4);
+  border-radius: var(--border-radius-full);
+  background: var(--color-background-secondary);
+  border: var(--spacing-1) solid var(--color-border);
+}
+
+.f-segmented-content {
+  display: none;
+
+  &.-active {
+    display: block;
+  }
+}
+
+.f-segment {
+  cursor: pointer;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-12) var(--spacing-24);
+  font-size: var(--font-size-8);
+  line-height: 1;
+  color: var(--color-text);
+  background: transparent;
+  border: none;
+  border-radius: var(--border-radius-full);
+  transition: var(--transition-button);
+  -webkit-tap-highlight-color: transparent;
+
+  &.-active {
+    color: var(--color-text-inverse);
+    background: var(--color-background-primary-inverse);
+  }
+}

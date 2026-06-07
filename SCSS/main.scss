@@ -5,11 +5,19 @@
 @use "components/button";
 @use "components/icon-card";
 @use "components/label";
+@use "components/chip";
+@use "components/segmented-control";
 
 @use "sections/header";
 @use "sections/hero";
 @use "sections/nav";
 @use "sections/experience";
+@use "sections/create";
+@use "sections/progress";
+@use "sections/tuned";
+@use "sections/privacy";
+@use "sections/download";
+@use "sections/footer";
 
 @use "utilities/container";
 @use "utilities/flex";

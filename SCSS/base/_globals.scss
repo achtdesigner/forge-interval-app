@@ -38,3 +38,9 @@ h2 {
 section {
   padding-block: var(--spacing-96);
 }
+
+button:focus-visible,
+a:focus-visible {
+  outline: var(--spacing-2) solid var(--color-accent);
+  outline-offset: var(--spacing-2);
+}

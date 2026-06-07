@@ -38,8 +38,3 @@
 .f-nav a:active {
   color: var(--color-text);
 }
-
-.f-nav a:focus-visible {
-  outline: var(--spacing-1) solid var(--color-accent-secondary);
-  outline-offset: var(--spacing-2);
-}

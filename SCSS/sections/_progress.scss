@@ -1,0 +1,12 @@
+.f-progress {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: var(--spacing-16);
+  text-align: center;
+
+  p {
+    width: 100%;
+    max-width: 64ch;
+  }
+}
