@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" data-beasties-container>
+  <head>
+    <meta charset="utf-8">
+    <title>Forge</title>
+
+    <base href="/forge-interval-app/forge/">
+
+    <meta name="color-scheme" content="light dark">
+    <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icon/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/icon/favicon.png">
+    <link rel="apple-touch-icon" href="assets/icon/apple-touch-icon.png">
+
+    <!-- add to homescreen for ios -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!--
+    Static splash screen styles.
+    These are inline so they apply before any JS or external CSS loads,
+    preventing any white flash or blank frame at startup.
+    CSS variables (defined in the Angular bundle, which is render-blocking)
+    resolve correctly on first paint; hex fallbacks cover the rare edge case.
+  -->
+    <style>
+      body {
+        background: #08090a; /* Dark (default) — prevents white flash */
+      }
+
+      #forge-splash {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--forge-color-background, #08090a);
+      }
+
+      .forge-splash__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .forge-splash__symbol {
+        display: block;
+        width: 44px;
+        height: 44px;
+        color: var(--forge-color-text, #f2f4f5);
+      }
+
+      .forge-splash__wordmark {
+        display: block;
+        height: 28px;
+        width: auto;
+        color: var(--forge-color-text, #f2f4f5);
+      }
+
+      .forge-splash__tagline {
+        margin: 0;
+        font-size: 0.75rem;
+        font-family: var(--forge-font-family, system-ui, sans-serif);
+        font-weight: 400;
+        color: var(--forge-color-text-secondary, #8a909a);
+        letter-spacing: 0.02em;
+        text-align: center;
+      }
+    </style>
+  <style>:root{--ion-color-primary:#0054e9;--ion-color-primary-rgb:0, 84, 233;--ion-color-primary-contrast:#fff;--ion-color-primary-contrast-rgb:255, 255, 255;--ion-color-primary-shade:#004acd;--ion-color-primary-tint:#1a65eb;--ion-color-secondary:#0163aa;--ion-color-secondary-rgb:1, 99, 170;--ion-color-secondary-contrast:#fff;--ion-color-secondary-contrast-rgb:255, 255, 255;--ion-color-secondary-shade:#015796;--ion-color-secondary-tint:#1a73b3;--ion-color-tertiary:#6030ff;--ion-color-tertiary-rgb:96, 48, 255;--ion-color-tertiary-contrast:#fff;--ion-color-tertiary-contrast-rgb:255, 255, 255;--ion-color-tertiary-shade:#542ae0;--ion-color-tertiary-tint:#7045ff;--ion-color-success:#2dd55b;--ion-color-success-rgb:45, 213, 91;--ion-color-success-contrast:#000;--ion-color-success-contrast-rgb:0, 0, 0;--ion-color-success-shade:#28bb50;--ion-color-success-tint:#42d96b;--ion-color-warning:#ffc409;--ion-color-warning-rgb:255, 196, 9;--ion-color-warning-contrast:#000;--ion-color-warning-contrast-rgb:0, 0, 0;--ion-color-warning-shade:#e0ac08;--ion-color-warning-tint:#ffca22;--ion-color-danger:#c5000f;--ion-color-danger-rgb:197, 0, 15;--ion-color-danger-contrast:#fff;--ion-color-danger-contrast-rgb:255, 255, 255;--ion-color-danger-shade:#ad000d;--ion-color-danger-tint:#cb1a27;--ion-color-light:#f4f5f8;--ion-color-light-rgb:244, 245, 248;--ion-color-light-contrast:#000;--ion-color-light-contrast-rgb:0, 0, 0;--ion-color-light-shade:#d7d8da;--ion-color-light-tint:#f5f6f9;--ion-color-medium:#636469;--ion-color-medium-rgb:99, 100, 105;--ion-color-medium-contrast:#fff;--ion-color-medium-contrast-rgb:255, 255, 255;--ion-color-medium-shade:#57585c;--ion-color-medium-tint:#737478;--ion-color-dark:#222428;--ion-color-dark-rgb:34, 36, 40;--ion-color-dark-contrast:#fff;--ion-color-dark-contrast-rgb:255, 255, 255;--ion-color-dark-shade:#1e2023;--ion-color-dark-tint:#383a3e}html{--ion-dynamic-font:-apple-system-body;--ion-font-family:var(--ion-default-font)}body{background:var(--ion-background-color);color:var(--ion-text-color)}@supports (padding-top: 20px){html{--ion-safe-area-top:var(--ion-statusbar-padding)}}@supports (padding-top: env(safe-area-inset-top)){html{--ion-safe-area-top:var(--safe-area-inset-top, env(safe-area-inset-top));--ion-safe-area-bottom:var(--safe-area-inset-bottom, env(safe-area-inset-bottom));--ion-safe-area-left:var(--safe-area-inset-left, env(safe-area-inset-left));--ion-safe-area-right:var(--safe-area-inset-right, env(safe-area-inset-right))}}*{box-sizing:border-box;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}html{width:100%;height:100%;-webkit-text-size-adjust:100%;text-size-adjust:100%}body{-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;margin:0;padding:0;position:fixed;width:100%;max-width:100%;height:100%;max-height:100%;transform:translateZ(0);text-rendering:optimizeLegibility;overflow:hidden;touch-action:manipulation;-webkit-user-drag:none;-ms-content-zooming:none;word-wrap:break-word;overscroll-behavior-y:none;-webkit-text-size-adjust:none;text-size-adjust:none}body{font-family:var(--ion-font-family, system-ui, sans-serif)}body{--forge-border-1:.0625rem;--forge-border-2:.125rem}body{--forge-radius-1:.0625rem;--forge-radius-2:.125rem;--forge-radius-4:.25rem;--forge-radius-8:.5rem;--forge-radius-16:1rem;--forge-radius-full:999rem}body{--forge-space-1:.0625rem;--forge-space-2:.125rem;--forge-space-3:.1875rem;--forge-space-4:.25rem;--forge-space-6:.375rem;--forge-space-8:.5rem;--forge-space-10:.625rem;--forge-space-12:.75rem;--forge-space-14:.875rem;--forge-space-16:1rem;--forge-space-18:1.125rem;--forge-space-20:1.25rem;--forge-space-24:1.5rem;--forge-space-28:1.75rem;--forge-space-32:2rem;--forge-space-48:3rem;--forge-space-56:3.5rem;--forge-size-36:2.25rem;--forge-size-40:2.5rem;--forge-size-64:4rem;--forge-size-72:4.5rem;--forge-size-104:6.5rem;--forge-size-toggle-h:1.625rem;--forge-content-max:32.5rem;--forge-content-max-wide:35rem;--forge-content-max-action:25rem;--forge-content-max-grid:46rem;--forge-tap-target:2.75rem;--forge-tap-target-lg:3.25rem;--forge-header-height:3.625rem;--forge-nav-bar-height:var( --forge-space-56 )}body{--forge-duration-instant:.1s;--forge-duration-base:.2s;--forge-duration-slow:.8s;--forge-duration-enter:.55s;--forge-ease-default:ease;--forge-ease-spring:cubic-bezier(.22, 1, .36, 1);--forge-duration-backdrop-in:.22s;--forge-duration-backdrop-out:.18s;--forge-duration-dialog-in:.28s;--forge-duration-dialog-out:.18s;--forge-duration-toast:.3s;--forge-duration-menu-in:.26s;--forge-duration-menu-out:.16s;--forge-duration-highlight:2.2s;--forge-reveal-pause:.15s;--forge-reveal-stagger:.04s;--forge-reveal-text-delay:.5s}body{--forge-font-family:Inter, Roboto, "Helvetica Neue", sans-serif;--forge-font-family-secondary:Inter, Roboto, "Helvetica Neue", sans-serif;--forge-font-family-timer:"sans-serif-condensed-medium", "Roboto Condensed", "Roboto", -apple-system, system-ui, sans-serif;--forge-font-size-xs:.625rem;--forge-font-size-s:.75rem;--forge-font-size-m:1rem;--forge-font-size-l:1.25rem;--forge-font-size-xl:1.5rem;--forge-font-size-xxl:2rem;--forge-font-size-hero:3rem;--forge-font-size-display:clamp( 5rem, 22vw, 8rem );--forge-font-size-page-title:clamp(1.75rem, 8vw, 2.25rem);--forge-font-size-year-heading:clamp(1.6rem, 4vw, 2rem);--forge-font-size-weight-hero:clamp(3.5rem, 18vw, 5.5rem);--forge-line-height-1:1;--forge-line-height-m:1.2;--forge-line-height-l:1.5;--forge-letter-spacing-tighter:-.03em;--forge-letter-spacing-tight:-.02em;--forge-letter-spacing-normal:0;--forge-letter-spacing-wide:.02em;--forge-letter-spacing-wider:.08em;--forge-letter-spacing-widest:.12em;--forge-icon-size-s:1rem;--forge-icon-size-m:1.25rem;--forge-icon-size-l:1.5rem;--forge-icon-size-xl:2rem;--forge-icon-size-xxl:2.5rem;--forge-weight-400:400;--forge-weight-600:600;--forge-weight-700:700}body{--forge-shadow-active:inset 0 var(--forge-border-1) 0 0 rgba(255, 255, 255, .08);--forge-shadow-workout-primary:0 var(--forge-space-2) var(--forge-space-10) rgba(0, 0, 0, .2);--forge-shadow-toggle-thumb:0 var(--forge-border-1) var(--forge-space-4) rgba(0, 0, 0, .3);--forge-shadow-float:0 2px 8px rgba(0, 0, 0, .3), 0 8px 24px rgba(0, 0, 0, .4), inset 0 1px 0 rgba(255, 255, 255, .05);--forge-shadow-modal:0 -1px 0 var(--forge-color-overlay-subtle), 0 -24px 48px rgba(0, 0, 0, .5)}body{--forge-label-coral-hue:rgb(255, 107, 107);--forge-label-orange-hue:rgb(255, 138, 60);--forge-label-amber-hue:rgb(255, 176, 32);--forge-label-gold-hue:rgb(240, 196, 25);--forge-label-lime-hue:rgb(200, 255, 30);--forge-label-green-hue:rgb(168, 232, 60);--forge-label-mint-hue:rgb(91, 224, 122);--forge-label-teal-hue:rgb(59, 224, 139);--forge-label-cyan-hue:rgb(59, 224, 192);--forge-label-sky-hue:rgb(69, 224, 255);--forge-label-blue-hue:rgb(46, 208, 255);--forge-label-indigo-hue:rgb(107, 138, 255);--forge-label-violet-hue:rgb(139, 123, 255);--forge-label-purple-hue:rgb(176, 123, 255);--forge-label-magenta-hue:rgb(224, 107, 240);--forge-label-pink-hue:rgb(255, 92, 168);--forge-label-coral-text:var(--forge-color-text);--forge-label-coral-bg:rgba(255, 107, 107, .08);--forge-label-coral-border:rgba(255, 107, 107, .85);--forge-label-orange-text:var(--forge-color-text);--forge-label-orange-bg:rgba(255, 138, 60, .08);--forge-label-orange-border:rgba(255, 138, 60, .85);--forge-label-amber-text:var(--forge-color-text);--forge-label-amber-bg:rgba(255, 176, 32, .08);--forge-label-amber-border:rgba(255, 176, 32, .85);--forge-label-gold-text:var(--forge-color-text);--forge-label-gold-bg:rgba(240, 196, 25, .08);--forge-label-gold-border:rgba(240, 196, 25, .85);--forge-label-lime-text:var(--forge-color-text);--forge-label-lime-bg:rgba(200, 255, 30, .08);--forge-label-lime-border:rgba(200, 255, 30, .85);--forge-label-green-text:var(--forge-color-text);--forge-label-green-bg:rgba(168, 232, 60, .08);--forge-label-green-border:rgba(168, 232, 60, .85);--forge-label-mint-text:var(--forge-color-text);--forge-label-mint-bg:rgba(91, 224, 122, .08);--forge-label-mint-border:rgba(91, 224, 122, .85);--forge-label-teal-text:var(--forge-color-text);--forge-label-teal-bg:rgba(59, 224, 139, .08);--forge-label-teal-border:rgba(59, 224, 139, .85);--forge-label-cyan-text:var(--forge-color-text);--forge-label-cyan-bg:rgba(59, 224, 192, .08);--forge-label-cyan-border:rgba(59, 224, 192, .85);--forge-label-sky-text:var(--forge-color-text);--forge-label-sky-bg:rgba(69, 224, 255, .08);--forge-label-sky-border:rgba(69, 224, 255, .85);--forge-label-blue-text:var(--forge-color-text);--forge-label-blue-bg:rgba(46, 208, 255, .08);--forge-label-blue-border:rgba(46, 208, 255, .85);--forge-label-indigo-text:var(--forge-color-text);--forge-label-indigo-bg:rgba(107, 138, 255, .08);--forge-label-indigo-border:rgba(107, 138, 255, .85);--forge-label-violet-text:var(--forge-color-text);--forge-label-violet-bg:rgba(139, 123, 255, .08);--forge-label-violet-border:rgba(139, 123, 255, .85);--forge-label-purple-text:var(--forge-color-text);--forge-label-purple-bg:rgba(176, 123, 255, .08);--forge-label-purple-border:rgba(176, 123, 255, .85);--forge-label-magenta-text:var(--forge-color-text);--forge-label-magenta-bg:rgba(224, 107, 240, .08);--forge-label-magenta-border:rgba(224, 107, 240, .85);--forge-label-pink-text:var(--forge-color-text);--forge-label-pink-bg:rgba(255, 92, 168, .08);--forge-label-pink-border:rgba(255, 92, 168, .85);--forge-color-accent:#c8ff1e;--forge-color-accent-dim:#9fcc18;--forge-color-accent-hover:#d4ff4a;--forge-color-accent-soft:rgba(200, 255, 30, .1);--forge-color-accent-fg:#08090a;--forge-color-accent-text:var(--forge-color-accent);--forge-color-background-inverse:#fafafa;--forge-color-background:#08090a;--forge-color-surface:#16191f;--forge-color-elevated:#1f222b;--forge-card-radius:var(--forge-radius-1);--forge-card-radius-large:var(--forge-radius-1);--forge-card-bg:var(--forge-color-surface);--forge-card-shadow:none;--forge-color-text-inverse:#08090a;--forge-color-text:#f2f4f5;--forge-color-text-secondary:#969da7;--forge-color-success:#3be08b;--forge-color-success-bg:rgba(59, 224, 139, .1);--forge-color-success-border:rgba(59, 224, 139, .22);--forge-color-success-ring:rgba(59, 224, 139, .35);--forge-color-info:#45e0ff;--forge-color-info-bg:rgba(69, 224, 255, .1);--forge-color-warning:#ffb020;--forge-color-warning-bg:rgba(255, 176, 32, .1);--forge-color-warning-border:rgba(255, 176, 32, .22);--forge-color-danger:#ff4d5e;--forge-color-danger-dim:#cc3e4b;--forge-color-danger-bg:rgba(255, 77, 94, .1);--forge-color-danger-fg:#ffffff;--forge-color-border-subtle:#2f333e;--forge-color-border:#434958;--forge-color-border-focus:#30343e;--forge-color-scrim:rgba(0, 0, 0, .55);--forge-color-scrim-light:rgba( 0, 0, 0, .28 );--forge-color-overlay-subtle:rgba( 255, 255, 255, .06 );--forge-color-overlay-soft:rgba( 255, 255, 255, .08 );--forge-color-overlay-mid:rgba( 255, 255, 255, .1 )}body{--forge-modal-backdrop-opacity:.6;--forge-blur-backdrop:3px;--forge-focus-ring-width:var(--forge-border-2);--forge-focus-ring-color:var(--forge-color-border-focus);--forge-focus-ring-offset:var(--forge-space-2);--forge-press-scale:.97;--forge-press-opacity:.7;--forge-opacity-disabled:.5;--forge-opacity-secondary:.6;--forge-opacity-muted:.38;--forge-opacity-subtle:.55;--forge-opacity-tertiary:.75}body{--forge-stats-dot-missed:rgba(250, 250, 250, .12);--forge-stats-dot-future:rgb(38, 42, 50);--forge-heatmap-level-1:rgb(34, 43, 11);--forge-heatmap-level-2:rgb(62, 79, 17);--forge-heatmap-level-3:rgb(110, 140, 25);--forge-heatmap-level-4:rgb(159, 203, 30);--forge-heatmap-level-5:rgb(200, 255, 30);--forge-heatmap-intensity-1:var(--forge-reflection-1);--forge-heatmap-intensity-2:var(--forge-reflection-2);--forge-heatmap-intensity-3:var(--forge-reflection-3);--forge-heatmap-intensity-4:var(--forge-reflection-4);--forge-heatmap-intensity-5:var(--forge-reflection-5);--forge-activity-cell-radius:var(--forge-radius-1)}body{--forge-color-phase-paused:#565c66;--forge-color-phase-getready:#6e8a12;--forge-color-phase-warmup:#ffb020;--forge-color-phase-work:#c8ff1e;--forge-color-phase-work-bg:rgba(200, 255, 30, .1);--forge-color-phase-rest:#ff4d5e;--forge-color-phase-rest-bg:rgba(255, 77, 94, .1);--forge-color-phase-rest-fg:var(--forge-color-phase-rest);--forge-color-phase-rest-border:var(--forge-color-phase-rest-bg);--forge-color-phase-cooldown:#45e0ff;--forge-reflection-1:rgb(59, 224, 139);--forge-reflection-1-bg:rgba(59, 224, 139, .1);--forge-reflection-2:rgb(69, 224, 255);--forge-reflection-2-bg:rgba(69, 224, 255, .1);--forge-reflection-3:rgb(255, 176, 32);--forge-reflection-3-bg:rgba(255, 176, 32, .1);--forge-reflection-4:rgb(255, 138, 60);--forge-reflection-4-bg:rgba(255, 138, 60, .1);--forge-reflection-5:rgb(255, 77, 94);--forge-reflection-5-bg:rgba(255, 77, 94, .1);--forge-feeling-icon-size:2.75rem;--forge-feeling-selected-bg-opacity:.16;--forge-template-goal-hiit:#c8ff1e;--forge-template-goal-recovery:#3be08b;--forge-template-goal-mobility:#45e0ff;--forge-template-goal-focus:#8b7bff;--forge-template-goal-conditioning:#ff8a3c;--forge-template-goal-breathwork:#5be0c8;--forge-template-goal-boxing:#ff4d5e;--forge-template-goal-strength:#ffb020;--forge-template-goal-endurance:#f0c419;--forge-template-goal-calisthenics:#a8e83c;--forge-template-goal-stretching:#6b8aff;--forge-template-goal-cardio:#ff5ca8;--forge-template-goal-performance:#2ed0ff}body{--forge-color-timeline-work:#a8f56a;--forge-color-timeline-work-bg:rgba(168, 245, 106, .12);--forge-color-timeline-rest:#ff7d7d;--forge-color-timeline-rest-bg:rgba(255, 125, 125, .12);--forge-color-timeline-warmup:#ffc96b;--forge-color-timeline-cooldown:#8faeff}:root{--ion-font-family:var(--forge-font-family);--ion-background-color:var(--forge-color-background);--ion-text-color:var(--forge-color-text);--ion-color-primary:var(--forge-color-text);--ion-color-primary-contrast:var(--forge-color-text-inverse);--ion-color-primary-shade:#c9c9cc;--ion-color-primary-tint:#e7e7ea;--ion-color-step-50:#18181b;--ion-color-step-100:#27272a;--ion-color-step-150:#3f3f46;--ion-color-step-200:#52525b}</style><link rel="stylesheet" href="styles-CCLSS4I5.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles-CCLSS4I5.css"></noscript></head>
+
+  <body>
+    <!--
+    Apply the stored theme class synchronously before first paint so the
+    correct theme background and text colors are in place from frame one.
+    ThemeService writes 'forge_theme_hint' to localStorage on every theme change.
+  -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("forge_theme_hint");
+          if (t === "light") document.body.classList.add("theme-light");
+        } catch (e) {}
+      })();
+    </script>
+
+    <!--
+    Static splash — visible from the very first frame, before Angular boots.
+    Dismissed (fade-out then removed) by main.ts after bootstrapApplication resolves.
+  -->
+    <div id="forge-splash">
+      <div class="forge-splash__content">
+        <!-- Symbol: Forge mark -->
+        <svg class="forge-splash__symbol" viewBox="0 0 1080 1080" fill="currentColor" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" style="fill-rule: evenodd; clip-rule: evenodd">
+          <g transform="matrix(4.62327,0,0,4.62327,-1090.44,-1830.22)">
+            <path d="M382.94,398.711C446.441,412.521 484.07,489.709 451.267,531.201C418.98,572.042 390.016,566.259 384.116,565.081C343.999,557.071 324.115,525.863 320.79,520.644C327.098,521.661 338.708,525.253 347.061,532.051C360.895,543.31 393.096,553.64 418.195,539.688C414.415,540.494 384.716,546.825 369.903,538.645C368.551,537.899 355.862,530.892 356.953,524.329C357.577,523.78 401.006,537.938 420.141,489.473C441.639,435.023 401.462,409.9 374.482,404.776C352.982,400.693 332.662,408.022 331.754,407.271C335.885,399.603 361.839,395.211 382.94,398.711ZM453.833,495.374C453.873,494.713 454.027,492.754 453.833,493.387C453.416,494.745 453.466,496.209 453.151,497.595C451.861,503.271 451.238,503.014 440.084,524.67C442.123,522.454 444.95,521.343 446.72,518.54C450.015,513.321 453.524,500.459 453.833,495.374ZM369.774,448.221C376.836,455.267 385.189,467.588 388.135,471.855C388.529,472.426 387.973,474.278 387.451,473.821C358.188,448.241 309.453,443.441 274.083,479.71C298.309,455.924 338.514,458.631 344.361,459.024C286.839,480.118 259.416,519.942 266.063,581.727C263.114,582.386 210.118,503.723 264.314,443.237C284.498,420.711 299.786,417.844 313.067,416.502C333.973,414.39 358.272,436.747 369.774,448.221ZM279.134,542.844C278.704,552.624 283.136,572.27 296.24,583.953C312.776,598.695 336.644,609.26 377.509,586.838C436.642,554.394 446.507,567.974 463.784,540.456C470.397,544.221 439.054,608.823 391.155,621.544C363.198,628.969 362.771,630.338 334.717,622.974C257.972,602.828 270.68,538.5 279.815,527.564C281.158,530.923 279.444,535.804 279.134,542.844ZM313.475,550.555C338.641,594.318 374.568,571.201 378.452,574.862C381.557,582.107 309.761,607.373 288.003,564.619C269.577,528.413 306.485,477.965 316.857,477.965C301.447,501.52 299.849,525.554 313.475,550.555ZM361.883,424.086C358.82,421.658 356.429,422.042 350.503,421.251C340.137,419.866 338.786,417.677 335.512,416.169C388.098,405.181 414.129,447.62 416.47,452.975C428.228,479.877 403.629,505.289 400.528,505.777C398.447,502.914 407.902,490.796 403.009,474.229C394.698,446.087 371.285,431.539 361.883,424.086Z"/>
+          </g>
+        </svg>
+
+        <!-- Wordmark: FORGE text -->
+        <svg class="forge-splash__wordmark" viewBox="0 0 512 100" fill="currentColor" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+          <g transform="matrix(10.1456,0,0,10.1456,-591.878,-419.277)">
+            <path fill-rule="nonzero" d="M62.225,50.544L62.225,48.23L66.385,48.23L66.385,45.786L62.225,45.786L62.225,44.408L67.1,44.408L67.1,41.964L59.144,41.964L59.144,50.544L62.225,50.544"/>
+            <path fill-rule="nonzero" d="M73.015,50.661C76.928,50.661 78.085,49.309 78.085,46.917L78.085,45.591C78.085,42.757 76.356,41.847 73.093,41.847L72.17,41.847C68.309,41.847 67.204,43.186 67.204,45.591L67.204,46.917C67.204,49.764 68.959,50.661 72.248,50.661L73.015,50.661ZM72.365,48.282C70.883,48.282 70.272,47.853 70.272,46.618L70.272,45.89C70.272,44.655 70.883,44.226 72.365,44.226L72.924,44.226C74.406,44.226 75.017,44.655 75.017,45.89L75.017,46.618C75.017,47.853 74.406,48.282 72.924,48.282L72.365,48.282Z"/>
+            <path fill-rule="nonzero" d="M81.634,50.544L81.634,48.295C82.245,48.334 82.986,48.347 83.649,48.347L84.923,50.544L88.147,50.544L86.613,47.983C87.77,47.541 88.42,46.618 88.42,45.188L88.42,44.98C88.42,42.393 86.626,41.964 83.844,41.964L78.566,41.964L78.566,50.544L81.634,50.544ZM83.324,46.189C82.765,46.189 82.206,46.176 81.634,46.137L81.634,44.252L83.714,44.252C85.001,44.252 85.365,44.473 85.365,45.149L85.365,45.279C85.365,45.981 84.923,46.189 83.467,46.189L83.324,46.189Z"/>
+            <path fill-rule="nonzero" d="M94.426,50.661C95.882,50.661 97.468,50.505 99.041,50.219L99.041,45.981L93.945,45.981L93.945,47.255L96.077,47.255L96.077,48.178C95.505,48.243 94.985,48.282 94.53,48.282L94.348,48.282C92.151,48.282 91.644,47.957 91.644,46.514L91.644,45.812C91.644,44.59 92.216,44.226 93.815,44.226L94.01,44.226C95.258,44.226 95.947,44.447 95.947,45.136L95.947,45.292L99.015,45.292L99.015,44.759C99.015,42.562 97.442,41.847 94.101,41.847L93.581,41.847C89.72,41.847 88.576,43.173 88.576,45.539L88.576,46.904C88.576,49.868 90.526,50.661 93.906,50.661L94.426,50.661Z"/>
+            <path fill-rule="nonzero" d="M99.613,41.964L99.613,50.544L107.998,50.544L107.998,48.243L102.681,48.243L102.681,47.307L107.283,47.307L107.283,45.162L102.681,45.162L102.681,44.265L107.998,44.265L107.998,41.964L99.613,41.964Z"/>
+          </g>
+        </svg>
+
+        <!-- Tagline -->
+        <p class="forge-splash__tagline">Build Consistency.</p>
+      </div>
+    </div>
+
+    <app-root></app-root>
+  <link rel="modulepreload" href="chunk-7VQEY6JI.js"><link rel="modulepreload" href="chunk-H4OLWARI.js"><link rel="modulepreload" href="chunk-EJ6VZZBL.js"><link rel="modulepreload" href="chunk-VXC2W35J.js"><link rel="modulepreload" href="chunk-4ACLLGOF.js"><link rel="modulepreload" href="chunk-AB7OTYGT.js"><link rel="modulepreload" href="chunk-QOJ4HWEO.js"><link rel="modulepreload" href="chunk-ZDG6JFZY.js"><link rel="modulepreload" href="chunk-KYNQXTA7.js"><link rel="modulepreload" href="chunk-7LYCHVZW.js"><script src="polyfills-TDCRLYKL.js" type="module"></script><script src="main-H32TVK5N.js" type="module"></script></body>
+</html>

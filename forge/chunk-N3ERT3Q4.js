@@ -1,0 +1,1 @@
+import{a as e,e as a}from"./chunk-VINNKM5T.js";function r(n,t){return n.create(e({handle:!0,handleBehavior:"none",initialBreakpoint:.85,breakpoints:[0,.85,1]},t))}var o=a(()=>{"use strict"});export{r as a,o as b};
