@@ -1,0 +1,1 @@
+import{a as E,b as _,j as T,l as A}from"./chunk-23PUCJWO.js";import{e as S}from"./chunk-VINNKM5T.js";var t,r,L,D=S(()=>{"use strict";A();_();t={NOTE_STREAK:T},r={INACTIVITY_DAYS:7},L={RANKS:E.find(R=>R.id==="consistency").ranks.map(R=>R.threshold)}});export{t as a,r as b,L as c,D as d};
