@@ -1,0 +1,1 @@
+import{e as r}from"./chunk-VINNKM5T.js";function i(s,t){return t===1?e[s]??s:s}var e,o=r(()=>{"use strict";e={"masteries.units.days":"masteries.units.day","masteries.units.workouts":"masteries.units.workout"}});export{i as a,o as b};

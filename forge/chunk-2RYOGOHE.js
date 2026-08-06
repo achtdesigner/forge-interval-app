@@ -1,0 +1,1 @@
+import{e as n,h as t}from"./chunk-VINNKM5T.js";function p(e,o,a="history",i,r){return t(this,null,function*(){yield e.navigate(["/workout-preview"],{state:{data:o,source:a,workoutId:i,preset:r}})})}var w=n(()=>{"use strict"});export{p as a,w as b};
