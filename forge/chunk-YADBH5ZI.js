@@ -1,0 +1,1 @@
+import{b as e,g as t}from"./chunk-F77FR7O3.js";import{e as p}from"./chunk-VINNKM5T.js";var r=p(()=>{"use strict"});var n,i=p(()=>{"use strict";t();r();n=e("App",{web:()=>import("./chunk-OPY5G6RR.js").then(o=>new o.AppWeb)})});export{n as a,i as b};
