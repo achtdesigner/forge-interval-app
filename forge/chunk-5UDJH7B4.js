@@ -1,1 +1,0 @@
-import{ca as a,s as r}from"./chunk-HYDXEEI4.js";import{e as n}from"./chunk-IUWJPDSS.js";function c(t){let e=r(new Date(t.createdAt)).getTime(),o=r(new Date(t.completedAt)).getTime();return Math.round((o-e)/864e5)+1}function u(t,e){return t.completedAt?c(t)===e:!1}var i=n(()=>{"use strict";a()});export{c as a,u as b,i as c};
